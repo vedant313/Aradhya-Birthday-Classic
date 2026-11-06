@@ -1,0 +1,51 @@
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{font-family:"Work Sans",sans-serif;background:radial-gradient(ellipse at 50% 45%,#38203a 0%,#1b1022 48%,#0d0812 100%);color:#fff6fb}
+.container{width:100%;height:100%;position:relative;overflow:hidden}.scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:26px;visibility:hidden;opacity:0}
+.one h1{font:500 clamp(3.5rem,10vw,7rem)/.98 "Playfair Display",serif;margin:0;letter-spacing:-3px}.one .name{font-style:italic;color:#f4a6ce}.tiny-heart{font-size:.4em;color:#f4a6ce}.two{font-size:clamp(1rem,2vw,1.3rem);font-weight:300;color:#e9cbdc;margin-top:25px;letter-spacing:.5px}
+.three p{font:500 clamp(2.1rem,7vw,5rem)/1.2 "Playfair Display",serif;color:#ffd8eb}
+.text-box{width:min(620px,88vw);border:1px solid #f3bad455;background:#fff8fc0c;backdrop-filter:blur(12px);border-radius:16px;padding:25px 26px 62px;position:relative;box-shadow:0 20px 80px #0004}.chat{text-align:left;font-size:clamp(1rem,2.5vw,1.4rem);line-height:1.6;color:#ffeaf4}.fake-btn{position:absolute;right:16px;bottom:14px;border:0;border-radius:30px;background:#e98cba;color:#32182b;padding:10px 22px;font-weight:700;cursor:pointer}
+.idea{position:absolute;width:90%;font:500 clamp(1.7rem,5vw,3.5rem)/1.3 "Playfair Display",serif;color:#fff0f8}.idea-3 strong{color:#f5a4ca;font-style:italic}.idea-5{font-size:clamp(2.5rem,7vw,5rem);color:#f5b2d2}.idea-5 span{color:#ffdaeb}.idea-6{display:flex;gap:25px}.idea-6 span{font:600 clamp(9rem,28vw,18rem)/1 "Playfair Display",serif;color:#f4a6ce;text-shadow:0 0 55px #e77dbb66}
+.six{gap:24px}.portrait-frame{position:relative;width:min(265px,55vw);height:min(365px,47vh);padding:9px;border:1px solid #f2c3d5aa;border-radius:150px 150px 24px 24px;background:linear-gradient(145deg,#f8d6e7,#8b4b70);box-shadow:0 20px 80px #0008}.portrait-frame img{width:100%;height:100%;object-fit:cover;border-radius:145px 145px 18px 18px}.photo-spark{position:absolute;right:-18px;top:22px;color:#f5c6da;font-size:35px}.wish-hbd{font:600 clamp(2.5rem,7vw,4.5rem)/1.1 "Playfair Display",serif;color:#f6b4d3;margin:0}.wish p{font-size:clamp(.95rem,2vw,1.2rem);color:#f4dce8;font-weight:300}
+.balloons{position:absolute;inset:0;overflow:hidden}.balloon{position:absolute;bottom:-180px;width:58px;height:76px;border-radius:50% 50% 46% 46%;background:var(--c);opacity:.86;box-shadow:inset -9px -8px 0 #00000012;animation:rise var(--d) linear infinite;animation-delay:var(--delay)}.balloon:after{content:"";position:absolute;left:50%;bottom:-17px;width:1px;height:40px;background:#f9d5e866}.party-note{position:relative;z-index:1;font:italic clamp(1.6rem,5vw,3rem) "Playfair Display";color:#ffe0ed;text-shadow:0 5px 30px #000}
+.big-heart{font-size:clamp(10rem,30vw,20rem);line-height:1;color:#f1a1c8;text-shadow:0 0 80px #f58fc4aa;animation:heartbeat 1.3s ease-in-out infinite}.confetti-word{font-size:13px;letter-spacing:7px;color:#f6d6e6;margin-top:10px}
+.nine p{font:500 clamp(1.6rem,4vw,3rem)/1.4 "Playfair Display",serif;max-width:800px}.nine button,.ten button{margin-top:25px;border:1px solid #f1a8cb;background:#f1a8cb;color:#291421;padding:13px 24px;border-radius:30px;font-weight:700;cursor:pointer}.last-smile{font:italic 1rem "Playfair Display"!important;color:#eac7d9;margin-top:40px}
+.ten{overflow-y:auto;justify-content:flex-start;padding-top:7vh;padding-bottom:60px}.gallery-label{font-size:10px;letter-spacing:4px;color:#eab6d0}.ten h2{font:500 clamp(2.8rem,7vw,5rem) "Playfair Display";margin:12px 0 30px}.ten h2 em{color:#f1a5ca}.gallery{width:min(920px,94vw);display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.gallery-item{border:1px solid #f6d5e322;background:#ffffff0a;padding:6px;border-radius:12px;cursor:pointer;transition:.25s}.gallery-item:hover{transform:translateY(-5px);border-color:#f2a7c9}.gallery-item img{width:100%;height:220px;object-fit:cover;border-radius:8px;display:block}.gallery-item span{display:block;padding:9px 2px 5px;font:italic 13px "Playfair Display";color:#f6dce9}.gallery-end{font:italic 18px "Playfair Display";color:#f5c8dd;margin:30px 0 0}
+.music-pill{position:fixed;right:20px;top:18px;z-index:20}.music-pill button{border:1px solid #f3c3d644;background:#26162bcc;color:#ffe6f2;border-radius:30px;padding:10px 15px;cursor:pointer;backdrop-filter:blur(10px)}.photo-viewer{display:none;position:fixed;inset:0;background:#09050df2;z-index:50;align-items:center;justify-content:center;gap:20px;padding:50px 15px}.photo-viewer.open{display:flex}.photo-viewer img{max-width:min(70vw,600px);max-height:80vh;object-fit:contain}.photo-viewer button{background:#ffffff16;border:1px solid #ffffff55;color:#fff;border-radius:50%;width:44px;height:44px;font-size:27px;cursor:pointer}.photo-viewer #viewerClose{position:absolute;right:22px;top:18px}
+@keyframes rise{to{transform:translateY(-125vh) rotate(18deg)}}@keyframes heartbeat{50%{transform:scale(1.09)}}@media(max-width:650px){.gallery{grid-template-columns:repeat(2,1fr);gap:10px}.gallery-item img{height:220px}.ten{padding-top:9vh}.text-box{padding:20px 18px 60px}.photo-viewer{gap:8px}.photo-viewer img{max-width:75vw}.photo-viewer button{width:38px;height:38px}.portrait-frame{width:220px;height:300px}.music-pill{right:10px;top:10px}.music-pill button{font-size:11px;padding:8px 11px}}
+
+#fireworks{position:fixed;inset:0;width:100%;height:100%;z-index:8;pointer-events:none}
+.special-wish{max-width:650px;font:italic clamp(1rem,2.4vw,1.35rem)/1.7 "Playfair Display",serif!important;color:#f8d8e8!important;margin-top:14px}
+.scene.seven,.scene.eight,.scene.nine{z-index:2}
+.gallery-item.old-memory{border-color:#f4c1d8;box-shadow:0 0 24px #ed9ac933}
+.gallery-item.old-memory img{object-position:center}
+
+/* WhatsApp-inspired birthday message scene */
+.four{background:radial-gradient(ellipse at center,#263b34 0%,#14231f 65%,#0c1714 100%)}
+.wa-phone{width:min(390px,92vw);height:min(720px,86vh);min-height:480px;border-radius:24px;overflow:hidden;background:#0b141a;border:1px solid #64756d66;box-shadow:0 24px 90px #0009;display:flex;flex-direction:column;text-align:left;position:relative}
+.wa-top{height:68px;flex-shrink:0;background:#202c33;display:flex;align-items:center;padding:0 13px;gap:11px;color:#f3f6f7}
+.wa-back{font-size:32px;line-height:1;color:#dce5e8}.wa-avatar{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#f2b3d0,#a75a89);font:600 20px "Playfair Display";color:#351b2b}
+.wa-contact{display:flex;flex-direction:column;gap:3px;flex:1}.wa-contact strong{font-size:15px;font-weight:500}.wa-contact small{font-size:11px;color:#aebbc0}.wa-actions{font-size:21px;color:#dce5e8}
+.wa-chat{flex:1;overflow:hidden;padding:18px 12px 12px;background-color:#0b141a;background-image:radial-gradient(#ffffff08 1px,transparent 1px);background-size:17px 17px;display:flex;flex-direction:column;gap:11px}
+.wa-date{align-self:center;background:#1e2a30;color:#b8c4c8;font-size:10px;letter-spacing:1px;border-radius:8px;padding:6px 12px}
+.wa-encrypt{align-self:center;max-width:88%;background:#182229;color:#d6c99a;text-align:center;font-size:10px;line-height:1.45;padding:8px 11px;border-radius:8px}
+.wa-bubble{position:relative;max-width:88%;padding:10px 10px 20px;border-radius:9px;font-size:13px;line-height:1.55;color:#e9edef;box-shadow:0 1px 1px #0003}
+.wa-bubble small{position:absolute;right:8px;bottom:4px;font-size:9px;color:#aab8bd;white-space:nowrap}
+.wa-bubble.received{align-self:flex-start;background:#202c33;border-top-left-radius:2px}
+.wa-bubble.sent{align-self:flex-end;background:#174d42;border-top-right-radius:2px}
+.birthday-message{max-width:94%;font-size:13px}
+.wa-typing{display:flex;gap:4px;align-items:center;align-self:flex-start;background:#202c33;padding:10px 13px;border-radius:12px;opacity:0}
+.wa-typing i{width:5px;height:5px;background:#aebbc0;border-radius:50%;animation:waDot 1s infinite alternate}.wa-typing i:nth-child(2){animation-delay:.2s}.wa-typing i:nth-child(3){animation-delay:.4s}
+.wa-compose{height:62px;flex-shrink:0;background:#202c33;display:flex;align-items:center;gap:10px;padding:8px 10px;color:#aebac0;font-size:19px}
+.wa-input{flex:1;background:#2a373e;border-radius:22px;padding:11px 14px;font-size:13px;color:#aebac0}
+.wa-send{width:40px;height:40px;border:0;border-radius:50%;background:#d88ab2;color:#25131e;font-size:19px;cursor:pointer}
+@keyframes waDot{to{opacity:.25;transform:translateY(-2px)}}
+@media(max-height:600px){.wa-phone{height:88vh;min-height:0}.wa-top{height:55px}.wa-compose{height:52px}.wa-chat{gap:7px;padding-top:10px}}
+
+/* Heart-shaped memory wall */
+.ten{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#d88ab2 #201322}
+.gallery{width:min(1040px,94vw);grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 16px;padding:10px 8px 25px}
+.gallery-item{background:transparent;border:0;padding:0;overflow:visible;display:flex;flex-direction:column;align-items:center;gap:7px}
+.gallery-item img{width:min(100%,235px);height:235px;object-fit:cover;border:0;border-radius:0;clip-path:polygon(50% 96%,43% 91%,30% 79%,16% 64%,6% 49%,1% 36%,3% 23%,11% 12%,23% 7%,35% 10%,50% 25%,65% 10%,77% 7%,89% 12%,97% 23%,99% 36%,94% 49%,84% 64%,70% 79%,57% 91%);filter:drop-shadow(0 8px 18px #0008);transition:transform .3s,filter .3s}
+.gallery-item:hover img{transform:scale(1.06) rotate(-2deg);filter:drop-shadow(0 12px 25px #f08fbd88)}
+.gallery-item span{font:italic 14px "Playfair Display";color:#f6dce9;text-align:center}
+.gallery-item.old-memory img{outline:2px solid #f4c1d8}
+@media(max-width:650px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 10px}.gallery-item img{height:clamp(155px,45vw,210px)}.ten{padding-top:5vh}.gallery-end{padding:0 12px}}

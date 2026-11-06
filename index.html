@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#120b18">
+<title>Happy Birthday Aradhya 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="music-pill"><button id="musicBtn">♫ <span id="musicText">Tap for music</span></button></div>
+<audio id="birthdaySong" src="https://raw.githubusercontent.com/vedant313/happy-birthday-master/main/music/birthday.mp3" preload="auto" loop></audio>
+<canvas id="fireworks"></canvas>
+<div class="container" id="story">
+  <section class="scene one">
+    <h1><span>Heyy</span><br><span class="name">Aradhya</span><span class="tiny-heart"> ♡</span></h1>
+    <p class="two">Your name is so beautiful!</p>
+  </section>
+  <section class="scene three"><p>It’s your Birthday today!!! 🎉🥳</p></section>
+  <section class="scene four">
+    <div class="text-box"><p class="chat" id="chat">Happy birthday to you!! Yeee! Many many happy blah... 💖</p><button class="fake-btn" id="send">Send</button></div>
+  </section>
+  <section class="scene five">
+    <p class="idea idea-1">I was just about to wish you...</p>
+    <p class="idea idea-2">But then I thought...</p>
+    <p class="idea idea-3">I should do something a little more <strong>special</strong>.</p>
+    <p class="idea idea-4">Because...</p>
+    <p class="idea idea-5">You are truly special <span>♡</span></p>
+    <p class="idea idea-6"><span>S</span><span>O</span></p>
+  </section>
+  <section class="scene six">
+    <div class="portrait-frame"><img src="img/aradhya1.webp" alt="Aradhya" id="mainPhoto"><span class="photo-spark">✦</span></div>
+    <div class="wish"><h2 class="wish-hbd">Happy Birthday!</h2><p>Wishing you endless happiness and love ❤️</p>
+    <p class="special-wish">May your every little dream find its way to you. Keep smiling, keep shining and never stop being wonderfully you. You deserve a year full of beautiful surprises! 💗</p></div>
+  </section>
+  <section class="scene seven"><div class="balloons" id="balloons"></div><div class="party-note">A little celebration, just for you ✨</div></section>
+  <section class="scene eight"><div class="big-heart">♡</div><div class="confetti-word">MAKE A WISH</div></section>
+  <section class="scene nine">
+    <p>Now tell me, did you like this little surprise? 💌</p>
+    <button id="replay">↻ Watch it again</button>
+    <p class="last-smile">Made with care, just for you. ♡</p>
+  </section>
+  <section class="scene ten">
+    <p class="gallery-label">MEMORIES FROM THEN & NOW</p><h2>Aradhya's <em>Gallery</em></h2>
+    <div class="gallery" id="gallery"></div>
+    <p class="gallery-end">Keep shining, keep smiling. Happy Birthday! ♡</p>
+    <button id="again">Replay the surprise ↻</button>
+  </section>
+</div>
+<div class="photo-viewer" id="viewer"><button id="viewerClose">×</button><button id="prev">‹</button><img id="viewerImg"><button id="next">›</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="script.js"></script>
+</body></html>
