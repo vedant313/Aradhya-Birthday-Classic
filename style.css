@@ -32,3 +32,8 @@
 .start-card button:disabled{opacity:.7;cursor:wait}
 .start-card small{display:block;margin-top:18px;color:#d7b7ca;font-size:11px}
 @media(max-width:480px){.start-card{padding:34px 18px}.start-card h1{font-size:2.9rem}}
+
+/* Keep the final WhatsApp reply visible instead of clipping it below the chat */
+.wa-chat{overflow-y:auto!important;overflow-x:hidden;scrollbar-width:none}
+.wa-chat::-webkit-scrollbar{display:none}
+.wa-bubble{flex-shrink:0}
