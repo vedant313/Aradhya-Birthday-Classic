@@ -51,10 +51,7 @@ function unlockBirthdayAudio(){
   }
  }).catch(()=>{});
 }
-function beginCelebrationMusic(){
- celebrationActive=true;
- if(musicUnlocked)startBirthdaySong();
-}
+function beginCelebrationMusic(){celebrationActive=true;if(musicUnlocked)startBirthdaySong()}
 document.addEventListener("pointerdown",unlockBirthdayAudio,true);
 document.addEventListener("keydown",unlockBirthdayAudio,true);
 function fireworksBurst(){const c=$("#fireworks"),ctx=c.getContext("2d"),dpr=Math.min(devicePixelRatio||1,2);c.width=innerWidth*dpr;c.height=innerHeight*dpr;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px";ctx.setTransform(dpr,0,0,dpr,0,0);let ps=[];for(let b=0;b<13;b++){const x=innerWidth*(.12+Math.random()*.76),y=innerHeight*(.12+Math.random()*.48),h=[325,340,285,42,15][b%5];for(let j=0;j<82;j++){const a=Math.PI*2*j/65,s=1.5+Math.random()*4;ps.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:70+Math.random()*45,hue:h,size:1+Math.random()*2.4})}}let f=0;function draw(){ctx.clearRect(0,0,innerWidth,innerHeight);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.vx*=.992;p.vy*=.992;p.life--;ctx.globalAlpha=Math.max(0,p.life/85);ctx.fillStyle=`hsl(${p.hue},95%,${65+Math.random()*20}%)`;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1;ps=ps.filter(p=>p.life>0);if(ps.length&&f++<280)requestAnimationFrame(draw);else ctx.clearRect(0,0,innerWidth,innerHeight)}draw()}
