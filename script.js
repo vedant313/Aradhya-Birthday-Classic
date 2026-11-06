@@ -3,57 +3,46 @@ const photos=[["img/aradhya0.webp","The birthday girl, with her cake 💗"],["im
 let timeline,photoIndex=0;
 function showPhoto(i){photoIndex=(i+photos.length)%photos.length;const im=$("#viewerImg");im.onerror=()=>{im.onerror=null;im.src="img/aradhya1.webp"};im.src=photos[photoIndex][0];$("#viewer").classList.add("open")}
 photos.forEach((photo,i)=>{const b=document.createElement("button");b.className="gallery-item "+(i===0?"featured-memory ":"")+(i%3===0?"heart-memory":i%3===1?"star-memory":"round-memory");const im=document.createElement("img");im.src=photo[0];im.alt="Aradhya photo "+(i+1);im.loading="eager";im.decoding="async";const cap=document.createElement("span");cap.textContent=photo[1];b.append(im,cap);im.onerror=()=>{im.onerror=null;im.src="img/aradhya1.webp";cap.textContent="A favourite memory ♡"};b.addEventListener("click",()=>showPhoto(i));gallery.appendChild(b)});
-let musicCtx=null,musicStarted=false,musicUnlocked=false,musicTimer=null,musicCursor=0,nextMusicTime=0,celebrationActive=false;
-const birthdayNotes=[
- [261.63,.38],[261.63,.20],[293.66,.62],[261.63,.62],[349.23,.62],[329.63,1.05],
- [261.63,.38],[261.63,.20],[293.66,.62],[261.63,.62],[392.00,.62],[349.23,1.05],
- [261.63,.38],[261.63,.20],[523.25,.62],[440.00,.62],[349.23,.62],[329.63,.62],[293.66,1.05],
- [466.16,.38],[466.16,.20],[440.00,.62],[349.23,.62],[392.00,.62],[349.23,1.15]
-];
-function getMusicContext(){
- const AudioContextClass=window.AudioContext||window.webkitAudioContext;
- if(!AudioContextClass)return null;
- if(!musicCtx)musicCtx=new AudioContextClass();
- return musicCtx;
+let birthdayAudio=null,birthdayAudioUnlocked=false,celebrationActive=false;
+function getBirthdayAudio(){
+ if(!birthdayAudio){
+  birthdayAudio=new Audio("./music_birthday.mp3");
+  birthdayAudio.preload="auto";
+  birthdayAudio.loop=true;
+  birthdayAudio.volume=.85;
+ }
+ return birthdayAudio;
 }
-function playBirthdayNote(freq,when,duration){
- const osc=musicCtx.createOscillator(),gain=musicCtx.createGain();
- osc.type="triangle";osc.frequency.setValueAtTime(freq,when);
- gain.gain.setValueAtTime(.0001,when);
- gain.gain.exponentialRampToValueAtTime(.13,when+.035);
- gain.gain.setValueAtTime(.10,when+Math.max(.06,duration*.65));
- gain.gain.exponentialRampToValueAtTime(.0001,when+duration);
- osc.connect(gain);gain.connect(musicCtx.destination);
- osc.start(when);osc.stop(when+duration+.04);
-}
-function scheduleBirthdayMelody(){
- if(!musicCtx||musicCtx.state!=="running")return;
- while(nextMusicTime<musicCtx.currentTime+1.3){
-  if(musicCursor>=birthdayNotes.length){musicCursor=0;nextMusicTime+=1.15;continue}
-  const [freq,duration]=birthdayNotes[musicCursor++];
-  playBirthdayNote(freq,nextMusicTime,duration);
-  nextMusicTime+=duration+.035;
+function unlockBirthdayAudio(){
+ const audio=getBirthdayAudio();
+ if(birthdayAudioUnlocked){if(celebrationActive)startBirthdaySong();return}
+ audio.muted=true;
+ const unlockPromise=audio.play();
+ if(unlockPromise&&typeof unlockPromise.then==="function"){
+  unlockPromise.then(()=>{
+   audio.pause();audio.currentTime=0;audio.muted=false;
+   birthdayAudioUnlocked=true;
+   if(celebrationActive)startBirthdaySong();
+   document.removeEventListener("pointerdown",unlockBirthdayAudio,true);
+   document.removeEventListener("keydown",unlockBirthdayAudio,true);
+  }).catch(()=>{audio.muted=false});
+ }else{
+  audio.pause();audio.currentTime=0;audio.muted=false;birthdayAudioUnlocked=true;
+  if(celebrationActive)startBirthdaySong();
  }
 }
 function startBirthdaySong(){
- if(!celebrationActive||!musicUnlocked||musicStarted||!musicCtx||musicCtx.state!=="running")return;
- musicStarted=true;musicCursor=0;nextMusicTime=musicCtx.currentTime+.12;
- scheduleBirthdayMelody();
- musicTimer=window.setInterval(scheduleBirthdayMelody,100);
+ if(!celebrationActive||!birthdayAudioUnlocked)return;
+ const audio=getBirthdayAudio();
+ if(audio.paused){audio.play().catch(()=>{birthdayAudioUnlocked=false})}
 }
-function unlockBirthdayAudio(){
- const ctx=getMusicContext();if(!ctx)return;
- if(ctx.state==="running"){musicUnlocked=true;startBirthdaySong();return}
- ctx.resume().then(()=>{
-  if(ctx.state==="running"){musicUnlocked=true;startBirthdaySong();
-   document.removeEventListener("pointerdown",unlockBirthdayAudio,true);
-   document.removeEventListener("keydown",unlockBirthdayAudio,true);
-  }
- }).catch(()=>{});
+function beginCelebrationMusic(){
+ celebrationActive=true;
+ if(birthdayAudioUnlocked)startBirthdaySong();
 }
-function beginCelebrationMusic(){celebrationActive=true;if(musicUnlocked)startBirthdaySong()}
 document.addEventListener("pointerdown",unlockBirthdayAudio,true);
 document.addEventListener("keydown",unlockBirthdayAudio,true);
+
 function fireworksBurst(){const c=$("#fireworks"),ctx=c.getContext("2d"),dpr=Math.min(devicePixelRatio||1,2);c.width=innerWidth*dpr;c.height=innerHeight*dpr;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px";ctx.setTransform(dpr,0,0,dpr,0,0);let ps=[];for(let b=0;b<13;b++){const x=innerWidth*(.12+Math.random()*.76),y=innerHeight*(.12+Math.random()*.48),h=[325,340,285,42,15][b%5];for(let j=0;j<82;j++){const a=Math.PI*2*j/65,s=1.5+Math.random()*4;ps.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:70+Math.random()*45,hue:h,size:1+Math.random()*2.4})}}let f=0;function draw(){ctx.clearRect(0,0,innerWidth,innerHeight);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.vx*=.992;p.vy*=.992;p.life--;ctx.globalAlpha=Math.max(0,p.life/85);ctx.fillStyle=`hsl(${p.hue},95%,${65+Math.random()*20}%)`;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1;ps=ps.filter(p=>p.life>0);if(ps.length&&f++<280)requestAnimationFrame(draw);else ctx.clearRect(0,0,innerWidth,innerHeight)}draw()}
 function makeBalloons(){const box=$("#balloons");box.innerHTML="";const colors=["#e98ab7","#d8a2dc","#f2c5d9","#b58acb","#f2b4a0","#d77ca9"];for(let i=0;i<34;i++){const b=document.createElement("i");b.className="balloon";b.style.left=Math.random()*96+"%";b.style.setProperty("--c",colors[i%colors.length]);b.style.setProperty("--d",8+Math.random()*8+"s");b.style.setProperty("--delay",-Math.random()*12+"s");box.appendChild(b)}}
 function buildTimeline(){if(typeof gsap==="undefined"){scenes.forEach(s=>{s.style.visibility="visible";s.style.opacity=1});return}if(timeline)timeline.kill();gsap.set(scenes,{autoAlpha:0});timeline=gsap.timeline();timeline.set(scenes[0],{autoAlpha:1}).from(".one h1",{y:35,opacity:0,duration:1.1,ease:"power3.out"}).from(".two",{y:18,opacity:0,duration:.7},"-=.35").to(".one",{autoAlpha:0,y:-25,duration:.8},"+=2.4").set(scenes[1],{autoAlpha:1}).from(".three p",{scale:.65,opacity:0,duration:1,ease:"back.out(1.7)"}).to(".three",{autoAlpha:0,duration:.7},"+=2.2").set(scenes[2],{autoAlpha:1}).from(".wa-phone",{scale:.88,y:25,opacity:0,duration:.8,ease:"back.out(1.5)"}).from(".wa-bubble",{opacity:0,y:12,stagger:.28,duration:.45}).from(".wa-compose",{opacity:0,y:10,duration:.3}).to(".wa-send",{scale:1.12,duration:.2,yoyo:true,repeat:1},"+=.8").to(".four",{autoAlpha:0,y:-35,duration:.7},"+=.6").set(scenes[3],{autoAlpha:1}).from(".idea-1",{opacity:0,y:25,duration:.7}).to(".idea-1",{opacity:0,y:-20,duration:.5},"+=1.6").from(".idea-2",{opacity:0,y:25,duration:.7}).to(".idea-2",{opacity:0,y:-20,duration:.5},"+=1.5").from(".idea-3",{opacity:0,y:25,duration:.7}).from(".idea-3 strong",{scale:0,rotation:-12,duration:.6,ease:"back.out(2)"}).to(".idea-3",{opacity:0,y:-20,duration:.5},"+=1.8").from(".idea-4",{opacity:0,y:20,duration:.6}).to(".idea-4",{opacity:0,duration:.45},"+=1.2").from(".idea-5",{opacity:0,scale:.6,rotation:-5,duration:.8,ease:"back.out(1.6)"}).to(".idea-5",{opacity:0,scale:.7,duration:.5},"+=1.8").from(".idea-6 span",{opacity:0,scale:2.5,rotation:12,stagger:.25,duration:.8,ease:"elastic.out(1,.5)"}).to(".idea-6",{opacity:0,scale:.6,duration:.6},"+=1.5").set(scenes[4],{autoAlpha:1}).call(beginCelebrationMusic).from(".portrait-frame",{opacity:0,scale:.65,rotation:-5,duration:1,ease:"back.out(1.5)"}).from(".wish-hbd",{opacity:0,y:25,duration:.8},"-=.2").from(".wish p",{opacity:0,y:15,duration:.7},"-=.3").to(".six",{autoAlpha:0,duration:.7},"+=3.2").set(scenes[5],{autoAlpha:1}).call(makeBalloons).call(fireworksBurst).to({}, {duration:.75}).call(fireworksBurst).to({}, {duration:.75}).call(fireworksBurst).to({}, {duration:.75}).call(fireworksBurst).from(".party-note",{opacity:0,scale:.7,duration:.8}).to(".seven",{autoAlpha:0,duration:.7},"+=3.5").set(scenes[6],{autoAlpha:1}).from(".big-heart",{scale:.2,opacity:0,duration:1,ease:"elastic.out(1,.4)"}).from(".confetti-word",{opacity:0,y:15,duration:.6},"-=.2").to(".eight",{autoAlpha:0,duration:.7},"+=2.7").set(scenes[7],{autoAlpha:1}).from(".nine p",{opacity:0,y:25,duration:.9}).from(".nine button",{opacity:0,y:15,duration:.5}).from(".last-smile",{opacity:0,duration:.5}).to(".nine",{autoAlpha:0,duration:.7},"+=4").set(scenes[8],{autoAlpha:1}).from(".gallery-label,.ten h2",{opacity:0,y:20,stagger:.15,duration:.7}).set(".gallery-item",{autoAlpha:1})}
