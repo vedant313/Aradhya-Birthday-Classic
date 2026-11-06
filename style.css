@@ -20,3 +20,15 @@
 .gallery-end{font:italic 20px "Playfair Display",serif;color:#f5c8dd;margin:28px 0 0;text-align:center}
 @media(max-width:760px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px;padding:14px 6px 28px}.gallery-item{min-height:220px;padding:12px 8px}.gallery-item img{width:min(100%,170px);height:170px}.gallery-item span{font-size:13px}.ten{padding-top:5vh}}
 @media(max-width:390px){.gallery-item{min-height:190px}.gallery-item img{height:145px}.gallery{gap:14px 8px}}
+
+.start-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 40%,#48233f 0%,#1b1022 60%,#0d0812 100%);transition:opacity .65s ease,visibility .65s ease}
+.start-overlay-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.start-card{width:min(440px,92vw);padding:42px 25px;border:1px solid #f3b4d366;border-radius:28px;background:#211326dd;box-shadow:0 24px 80px #0008;text-align:center}
+.start-heart{font:5rem/1 "Playfair Display",serif;color:#f5a6cc;text-shadow:0 0 30px #f08fbd88}
+.start-kicker{font-size:10px;letter-spacing:4px;color:#eab6d0;margin:18px 0 8px}
+.start-card h1{font:italic 3.4rem/1.1 "Playfair Display",serif;color:#f6b4d3;margin:0}
+.start-card p:not(.start-kicker){font-size:14px;color:#f4dce8;margin:17px 0 23px}
+.start-card button{border:0;border-radius:30px;padding:15px 25px;background:#f1a8cb;color:#291421;font:600 14px "Work Sans",sans-serif;cursor:pointer;box-shadow:0 8px 28px #e88bb844}
+.start-card button:disabled{opacity:.7;cursor:wait}
+.start-card small{display:block;margin-top:18px;color:#d7b7ca;font-size:11px}
+@media(max-width:480px){.start-card{padding:34px 18px}.start-card h1{font-size:2.9rem}}
