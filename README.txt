@@ -1,16 +1,13 @@
-ARADHYA — HEARTS & FIREWORKS BIRTHDAY WEBSITE
+ARADHYA — CLASSIC ANIMATED BIRTHDAY WEBSITE
 
-Includes 10 uploaded Aradhya photos in a dedicated heart-shaped memory wall,
-plus the previous-year photo URL from the original public GitHub project
-(with a local-photo fallback if that remote image is unavailable).
+This recreates the same story sequence from your earlier happy-birthday-master
+project: Heyy Aradhya, birthday greeting, message box, special reveal, big SO,
+birthday photo reveal, balloons, wish, outro and replay. It also adds an 8-photo
+gallery at the end.
 
-The birthday reveal includes a birthday song autoplay attempt, floating balloons,
-repeated bright fireworks bursts, a special wish, WhatsApp-inspired message
-screen, and replay. Browser autoplay policies may require one tap on the music
-control if automatic playback is blocked.
+PREVIEW: Extract the ZIP and open index.html. Internet is needed for Google Fonts
+and GSAP animation CDN. Tap "Tap for music" once to enable the original generated
+birthday melody; browser autoplay is restricted.
 
-PREVIEW: Extract ZIP and open index.html. Internet is required for Google Fonts,
-GSAP animation library, and the remotely hosted original birthday song.
-
-GITHUB PAGES: Upload all files/folders to a GitHub repository. Settings > Pages >
-Deploy from a branch > main > /(root) > Save.
+GITHUB PAGES: Create a repository, upload all files/folders, then Settings >
+Pages > Deploy from a branch > main > /(root) > Save.
